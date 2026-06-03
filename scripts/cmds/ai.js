@@ -3,20 +3,24 @@ const axios = require("axios");
 module.exports = {
   config: {
     name: "ai",
-    version: "10.0",
-    author: "ChatGPT",
+    version: "12.0",
+    author: "Raihan Choudhury",
     countDown: 3,
     role: 0,
-    description: "Godbot Ultimate AI System (All-in-One Script)",
+    description: "AI System (Grok + Groq + Gemini + Voice + Image)",
     category: "ai",
     guide: {
-      en: "{pn} <model> <question>\nExample: ai auto hello"
+      en: `
+ai <model> <question>
+ai voice <text>
+ai image <prompt>
+
+Models:
+grok | groq | gemini
+      `
     }
   },
 
-  // =========================
-  // MEMORY SYSTEM
-  // =========================
   memory: new Map(),
 
   init() {
@@ -49,161 +53,144 @@ module.exports = {
   },
 
   // =========================
-  // VOICE SYSTEM (TTS)
+  // VOICE (TTS)
   // =========================
   voice(text) {
     return `https://api.streamelements.com/kappa/v2/speech?voice=Brian&text=${encodeURIComponent(text)}`;
   },
 
   // =========================
-  // IMAGE HOOK (READY)
+  // IMAGE GENERATOR
   // =========================
-  async image(prompt) {
+  image(prompt) {
     return `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}`;
   },
 
   // =========================
-  // AI CALLERS
+  // GROK
   // =========================
   async grok(prompt, history) {
-    const key = process.env.XAI_API_KEY;
-    if (!key) return null;
-
-    const res = await axios.post(
-      "https://api.x.ai/v1/chat/completions",
-      {
-        model: "grok-2-latest",
-        messages: [
-          { role: "system", content: "You are Grok AI assistant." },
-          ...history
-        ],
-        temperature: 0.7,
-        max_tokens: 1200
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${key}`,
-          "Content-Type": "application/json"
+    try {
+      const res = await axios.post(
+        "https://api.x.ai/v1/chat/completions",
+        {
+          model: "grok-2-latest",
+          messages: [
+            { role: "system", content: "You are Grok AI assistant." },
+            ...history
+          ]
         },
-        timeout: 30000
-      }
-    );
+        {
+          headers: {
+            Authorization: `Bearer xai-GkYC3ltJufHYDaEPkyZud5yYcA4rWT8s3Pk6QlOfivxP9xdjX9t28kIK2jJFW4VrER6LoKOnGC6WhWPe`,
+            "Content-Type": "application/json"
+          }
+        }
+      );
 
-    return res.data?.choices?.[0]?.message?.content;
-  },
-
-  async groq(prompt, history) {
-    const key = process.env.GROQ_API_KEY;
-    if (!key) return null;
-
-    const res = await axios.post(
-      "https://api.groq.com/openai/v1/chat/completions",
-      {
-        model: "llama-3.3-70b-versatile",
-        messages: [
-          { role: "system", content: "You are helpful assistant." },
-          ...history
-        ],
-        temperature: 0.7,
-        max_tokens: 1200
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${key}`,
-          "Content-Type": "application/json"
-        },
-        timeout: 30000
-      }
-    );
-
-    return res.data?.choices?.[0]?.message?.content;
-  },
-
-  async gemini(prompt) {
-    const key = process.env.GEMINI_API_KEY;
-    if (!key) return null;
-
-    const res = await axios.post(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${key}`,
-      {
-        contents: [{ parts: [{ text: prompt }] }]
-      },
-      { timeout: 30000 }
-    );
-
-    return res.data?.candidates?.[0]?.content?.parts?.[0]?.text;
+      return res.data?.choices?.[0]?.message?.content;
+    } catch {
+      return null;
+    }
   },
 
   // =========================
-  // SMART ROUTER
+  // GROQ
+  // =========================
+  async groq(prompt, history) {
+    try {
+      const res = await axios.post(
+        "https://api.groq.com/openai/v1/chat/completions",
+        {
+          model: "llama-3.3-70b-versatile",
+          messages: [
+            { role: "system", content: "You are a helpful assistant." },
+            ...history
+          ]
+        },
+        {
+          headers: {
+            Authorization: `Bearer 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`,
+            "Content-Type": "application/json"
+          }
+        }
+      );
+
+      return res.data?.choices?.[0]?.message?.content;
+    } catch {
+      return null;
+    }
+  },
+
+  // =========================
+  // GEMINI
+  // =========================
+  async gemini(prompt) {
+    try {
+      const res = await axios.post(
+        "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AQ.Ab8RN6LCvMTLuFuAaiSwzKsNrBdCIUuPSLW1bLk4qoIIC5EsFg",
+        {
+          contents: [{ parts: [{ text: prompt }] }]
+        }
+      );
+
+      return res.data?.candidates?.[0]?.content?.parts?.[0]?.text;
+    } catch {
+      return null;
+    }
+  },
+
+  // =========================
+  // ROUTER
   // =========================
   async router(model, prompt, history) {
-
-    const auto = async () => {
-      return (
-        (await this.grok(prompt, history)) ||
-        (await this.groq(prompt, history)) ||
-        (await this.gemini(prompt))
-      );
-    };
-
     if (model === "grok") return await this.grok(prompt, history);
     if (model === "groq") return await this.groq(prompt, history);
     if (model === "gemini") return await this.gemini(prompt);
-
-    return await auto();
+    return "❌ Invalid model (grok / groq / gemini)";
   },
 
   // =========================
-  // MAIN HANDLER
+  // MAIN
   // =========================
   onStart: async function ({ message, args, event }) {
     this.init();
 
     const id = event.senderID;
+    const cmd = args[0]?.toLowerCase();
 
-    if (!args.length) {
+    // ================= VOICE =================
+    if (cmd === "voice") {
+      const text = args.slice(1).join(" ");
+      if (!text) return message.reply("❌ Please provide text");
+
+      const audio = this.voice(text);
+      return message.reply({ attachment: await global.utils.getStreamFromURL(audio) });
+    }
+
+    // ================= IMAGE =================
+    if (cmd === "image") {
+      const prompt = args.slice(1).join(" ");
+      if (!prompt) return message.reply("❌ Please provide prompt");
+
+      const img = this.image(prompt);
+      return message.reply(img);
+    }
+
+    // ================= AI CHAT =================
+    if (args.length < 2) {
       return message.reply(
-`╭─── GODBOT ULTIMATE AI ───╮
-
-Commands:
+`Usage:
 ai <model> <question>
 
-Models:
-• grok
-• groq
-• gemini
-• auto
-
 Extra:
-• ai voice <text>
-• ai image <prompt>
-
-Example:
-ai auto what is AI
-
-╰─────────────────────────╯`
+ai voice <text>
+ai image <prompt>`
       );
     }
 
-    const model = args[0].toLowerCase();
+    const model = cmd;
     const prompt = args.slice(1).join(" ");
-
-    // =========================
-    // VOICE MODE
-    // =========================
-    if (model === "voice") {
-      const url = this.voice(prompt);
-      return message.reply({ attachment: await global.utils.getStreamFromURL(url) });
-    }
-
-    // =========================
-    // IMAGE MODE
-    // =========================
-    if (model === "image") {
-      const url = await this.image(prompt);
-      return message.reply(url);
-    }
 
     const session = this.getSession(id);
 
@@ -212,32 +199,21 @@ ai auto what is AI
     try {
       const reply = await this.router(model, prompt, session.history);
 
-      if (!reply) {
-        return message.reply("❌ AI response failed.");
-      }
+      if (!reply) return message.reply("❌ No response");
 
       this.addHistory(id, "assistant", reply);
 
       return message.reply(
-`╭─── AI RESPONSE (${model.toUpperCase()}) ───╮
+`╭─── AI (${model.toUpperCase()}) ───╮
 
-${reply.trim()}
+${reply}
 
-╰────────────────────────────────────────╯`
+╰────────────────────────╯`
       );
 
     } catch (err) {
-      console.log(err.response?.data || err.message);
-
-      return message.reply(
-`❌ SYSTEM ERROR
-
-• API failure
-• Network issue
-• Rate limit
-
-Try again later.`
-      );
+      console.log(err);
+      return message.reply("❌ System error");
     }
   }
 };
