@@ -18,17 +18,14 @@ module.exports = {
   onStart: async function ({ api, event }) {
     const ownerText = 
 `╭─ 👑 Oᴡɴᴇʀ Iɴғᴏ 👑 ─╮
-│ 👤 Nᴀᴍᴇ       : 亗•𝘔𝘈𝘔𝘜𝘕✿᭄
-│🧸 Nɪᴄᴋ       : Vondo
-│ 🎂 Aɢᴇ        : 19+
+│ 👤 Nᴀᴍᴇ       : 𝗥𝗮𝗶𝗵𝗮𝗻 𝗖𝗵𝗼𝘂𝗱𝗵𝘂𝗿𝘆✿᭄
+│    Aɢᴇ        : 20+
 │ 💘 Rᴇʟᴀᴛɪᴏɴ : Sɪɴɢʟᴇ
 │ 🎓 Pʀᴏғᴇssɪᴏɴ : Sᴛᴜᴅᴇɴᴛ
 │ 📚 Eᴅᴜᴄᴀᴛɪᴏɴ : Iɴᴛᴇʀ 2ɴᴅ Yᴇᴀʀ
-│ 🏡 Lᴏᴄᴀᴛɪᴏɴ : 🄺🄷🅄🄻🄽🄷  
+│ 🏡 Lᴏᴄᴀᴛɪᴏɴ : 𝖭𝗈𝖺𝗄𝗁𝖺𝗅𝗂  
 ├─ 🔗 Cᴏɴᴛᴀᴄᴛ ─╮
-│ 📘 Facebook  : https://www.facebook.com/share/171Y441F7H/
-│ 💬 Messenger: m.me/61558931578859
-│ 📞 WhatsApp  : wa.me/01830981279
+│ 📞 WhatsApp  : wa.me/01604884635
 ╰────────────────╯`;
 
     const cacheDir = path.join(__dirname, "cache");
@@ -36,7 +33,7 @@ module.exports = {
 
     if (!fs.existsSync(cacheDir)) fs.mkdirSync(cacheDir);
 
-    const imgLink = "https://i.imgur.com/g0GpgfG.jpeg";
+    const imgLink = "https://i.imgur.com/BWWjxxV.jpeg";
 
     const send = () => {
       api.sendMessage(
