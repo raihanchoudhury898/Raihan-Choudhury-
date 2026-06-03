@@ -102,7 +102,7 @@ module.exports = {
 ┃ ☯️ GROUP  : 『 ${groupPrefix} 』
 ┃ 💠 TIME   : ${time}
 ┃ ⚠️ DATE   : ${date}
-┃ Ⓜ️ OWNER  : ${owner}
+┃ Ⓜ️ OWNER  : 𝗥𝗮𝗶𝗵𝗮𝗻 𝗖𝗵𝗼𝘂𝗱𝗵𝘂𝗿𝘆
 ╰━━━〔 ✨ ×͜× 〕━━━╯`
     );
   }
