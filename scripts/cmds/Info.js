@@ -4,37 +4,29 @@ module.exports = {
   config: {
     name: "info",
     aliases: ["admininfo", "botinfo", "ownerinfo"],
-    version: "3.0",
+    version: "3.8",
     author: "Raihan Choudhury",
     countDown: 5,
     role: 0,
     shortDescription: { en: "Show bot & owner info" },
-    longDescription: { en: "Display detailed bot & owner information" },
+    longDescription: { en: "Display bot and owner information" },
     category: "owner",
     guide: { en: "{pn}" }
   },
 
   onStart: async function ({ message }) {
 
-    // ================= OWNER INFO =================
     const owner = {
-      name: "Raihan Choudhury",
-      age: "20+",
-      status: "Single",
-      phone: "+8801604884635",
-      facebook: "Raihan Choudhury",
-      messenger: "https://m.me/your.profile"
+      name: "𝓡𝓪𝓲𝓱𝓪𝓷 𝓒𝓱𝓸𝓾𝓭𝓱𝓾𝓻𝔂",
+      age: "❲ 20+ ❳",
+      status: "❮ Single ❯",
+      phone: "➤ 𝟬𝟭𝟴𝟭𝟰𝟯𝟵𝟬𝟴𝟳𝟭"
     };
 
-    // ================= MEDIA =================
-    const video = "https://files.catbox.moe/a03xbs.mp4";
-
-    // ================= TIME =================
     const now = moment().tz("Asia/Dhaka");
     const date = now.format("MMMM Do YYYY");
     const time = now.format("h:mm:ss A");
 
-    // ================= UPTIME =================
     const uptime = process.uptime();
     const d = Math.floor(uptime / 86400);
     const h = Math.floor((uptime % 86400) / 3600);
@@ -43,43 +35,29 @@ module.exports = {
 
     const uptimeStr = `${d}d ${h}h ${m}m ${s}s`;
 
-    // ================= TEXT UI =================
     const text =
-`━━━━━━━━━━━━━━━━━━━━━━
-        🤖 BOT DASHBOARD
-━━━━━━━━━━━━━━━━━━━━━━
+`┌──────── BOT ────────┐
+Bot     : ${global.GoatBot.config.nickNameBot}
+Prefix  : ${global.GoatBot.config.prefix}
+└─────────────────────┘
 
-🤖 Bot Name : ${global.GoatBot.config.nickNameBot}
-⚙️ Prefix   : ${global.GoatBot.config.prefix}
+┌────── OWNER ───────┐
+Name   : ${owner.name}
+Age    : ${owner.age}
+Status : ${owner.status}
+└────────────────────┘
 
-━━━━━━━━━━━━━━━━━━━━━━
-👑 OWNER PROFILE
-━━━━━━━━━━━━━━━━━━━━━━
+┌────── CONTACT ─────┐
+Phone  : ${owner.phone}
+└────────────────────┘
 
-👤 Name   : ${owner.name}
-🎂 Age    : ${owner.age}
-💖 Status : ${owner.status}
+┌────── SYSTEM ──────┐
+Date   : ${date}
+Time   : ${time}
+Uptime : ${uptimeStr}
+└────────────────────┘`;
 
-📞 Phone     : ${owner.phone}
-📘 Facebook  : ${owner.facebook}
-💬 Messenger : ${owner.messenger}
-
-━━━━━━━━━━━━━━━━━━━━━━
-📊 SYSTEM STATUS
-━━━━━━━━━━━━━━━━━━━━━━
-
-📅 Date   : ${date}
-⏰ Time   : ${time}
-⏳ Uptime : ${uptimeStr}
-
-━━━━━━━━━━━━━━━━━━━━━━
-💡 Powered by ${owner.name}
-━━━━━━━━━━━━━━━━━━━━━━`;
-
-    return message.reply({
-      body: text,
-      attachment: await global.utils.getStreamFromURL(video)
-    });
+    return message.reply({ body: text });
   },
 
   onChat: async function ({ event, message }) {
