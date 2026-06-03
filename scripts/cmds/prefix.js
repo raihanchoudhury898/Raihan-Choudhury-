@@ -5,7 +5,7 @@ module.exports = {
   config: {
     name: "prefix",
     version: "2.4",
-    author: "MAMUN",
+    author: "Raihan Choudhury",
     countDown: 5,
     role: 0,
     description: "Change & show bot prefix",
@@ -93,7 +93,7 @@ module.exports = {
     const time = moment().tz("Asia/Dhaka").format("hh:mm A");
     const date = moment().tz("Asia/Dhaka").format("DD MMM YYYY");
 
-    const owner = global.GoatBot.config.adminName || "MAMUN";
+    const owner = global.GoatBot.config.adminName || "Raihan Choudhury";
 
     return message.reply(
 `╭━━━〔 PREFIX 〕━━━╮
