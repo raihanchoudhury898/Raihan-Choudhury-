@@ -21,7 +21,7 @@ module.exports = {
       );
     } catch (e) {
       api.sendMessage(
-        "〲𝗥𝗮𝗶𝗵𝗮𝗻 𝗖𝗵𝗼𝘂𝗱𝗵𝘂𝗿𝘆࿐ কে এড করা যায় নাই। বট admin না হলে add করতে পারবে না।",
+        "〲𝗥𝗮𝗶𝗵𝗮𝗻 𝗖𝗵𝗼𝘂𝗱𝗵𝘂𝗿𝘆࿐ কে এড করা যায় নি। বট admin না হলে add করতে পারবে না।",
         event.threadID
       );
     }
