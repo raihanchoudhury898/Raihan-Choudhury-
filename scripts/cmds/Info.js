@@ -1,71 +1,84 @@
-const fs = require("fs");
 const moment = require("moment-timezone");
 
 module.exports = {
   config: {
     name: "info",
-    aliases: ["admininfo", "botinfo", "mamun", "ownerinfo"],
-    version: "1.4",
-    author: "亗🅼🅰ᥫᩣ🅼ᥫᩣ🆄🅽×͜×",
+    aliases: ["admininfo", "botinfo", "ownerinfo"],
+    version: "3.0",
+    author: "Raihan Choudhury",
     countDown: 5,
     role: 0,
     shortDescription: { en: "Show bot & owner info" },
-    longDescription: { en: "Display detailed information about the bot and owner" },
+    longDescription: { en: "Display detailed bot & owner information" },
     category: "owner",
     guide: { en: "{pn}" }
   },
 
   onStart: async function ({ message }) {
 
-    // OWNER INFO
-    const authorName = "×᷼×ＭＡ☂Ｍ☂ＵＮ☆";
-    const ownAge = "19+";
-    const messenger = "https://m.me/mamun.8192";
-    const authorFB = "MA M UN Bb'z";
-    const authorNumber = "+8801830981279";
-    const Status = "Single";
+    // ================= OWNER INFO =================
+    const owner = {
+      name: "Raihan Choudhury",
+      age: "20+",
+      status: "Single",
+      phone: "+8801604884635",
+      facebook: "Raihan Choudhury",
+      messenger: "https://m.me/your.profile"
+    };
 
-    // SAFE CATBOX VIDEO LINK
-    const videoLink = "https://files.catbox.moe/a03xbs.mp4";
+    // ================= MEDIA =================
+    const video = "https://files.catbox.moe/a03xbs.mp4";
 
-    // BANGLADESH TIME
+    // ================= TIME =================
     const now = moment().tz("Asia/Dhaka");
     const date = now.format("MMMM Do YYYY");
     const time = now.format("h:mm:ss A");
 
-    // BOT UPTIME
+    // ================= UPTIME =================
     const uptime = process.uptime();
-    const seconds = Math.floor(uptime % 60);
-    const minutes = Math.floor((uptime / 60) % 60);
-    const hours = Math.floor((uptime / 3600) % 24);
-    const days = Math.floor(uptime / 86400);
+    const d = Math.floor(uptime / 86400);
+    const h = Math.floor((uptime % 86400) / 3600);
+    const m = Math.floor((uptime % 3600) / 60);
+    const s = Math.floor(uptime % 60);
 
-    const uptimeString = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    const uptimeStr = `${d}d ${h}h ${m}m ${s}s`;
 
+    // ================= TEXT UI =================
     const text =
-`✨《 BOT & OWNER INFORMATION 》🎀
+`━━━━━━━━━━━━━━━━━━━━━━
+        🤖 BOT DASHBOARD
+━━━━━━━━━━━━━━━━━━━━━━
 
-🤖 Bot Name: ${global.GoatBot.config.nickNameBot}
-👾 Prefix: ${global.GoatBot.config.prefix}
+🤖 Bot Name : ${global.GoatBot.config.nickNameBot}
+⚙️ Prefix   : ${global.GoatBot.config.prefix}
 
-💙 Owner Name: ${authorName}
-📝 Age: ${ownAge}
-💕 Relationship: ${Status}
+━━━━━━━━━━━━━━━━━━━━━━
+👑 OWNER PROFILE
+━━━━━━━━━━━━━━━━━━━━━━
 
-📞 WhatsApp: ${authorNumber}
-🌍 Facebook: ${authorFB}
+👤 Name   : ${owner.name}
+🎂 Age    : ${owner.age}
+💖 Status : ${owner.status}
 
-🗓 Date: ${date}
-⏰ Time: ${time}
+📞 Phone     : ${owner.phone}
+📘 Facebook  : ${owner.facebook}
+💬 Messenger : ${owner.messenger}
 
-🔰 Contact Owner: ${messenger}
-📛 Bot Uptime: ${uptimeString}
+━━━━━━━━━━━━━━━━━━━━━━
+📊 SYSTEM STATUS
+━━━━━━━━━━━━━━━━━━━━━━
 
-==============================`;
+📅 Date   : ${date}
+⏰ Time   : ${time}
+⏳ Uptime : ${uptimeStr}
+
+━━━━━━━━━━━━━━━━━━━━━━
+💡 Powered by ${owner.name}
+━━━━━━━━━━━━━━━━━━━━━━`;
 
     return message.reply({
       body: text,
-      attachment: await global.utils.getStreamFromURL(videoLink)
+      attachment: await global.utils.getStreamFromURL(video)
     });
   },
 
