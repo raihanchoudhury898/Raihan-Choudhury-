@@ -29,13 +29,13 @@ module.exports = {
         if (!args[0]) return message.reply(getLang("missingMessage"));
 
         const adminID = envCommands[this.config.name].adminID;
-        const senderName = "亗🅼🅰ᥫᩣ🅼ᥫᩣ🆄🅽×͜×";
+        const senderName = "𝗥𝗮𝗶𝗵𝗮𝗻 𝗖𝗵𝗼𝘂𝗱𝗵𝘂𝗿𝘆";
 
         const allThreads = (await threadsData.getAll()).filter(t => t.isGroup);
 
         // notification body (Front font + English only)
         const textMessage = `╔═══❰ ✨𝙰𝙻𝙻 𝙲𝙷𝙰𝚃 𝙱𝙾𝚇𝙴𝚂✨ ❱══╗
-📢 𝙽𝚘𝚝𝚒𝚌𝚎 from 𝙰𝙳𝙼𝙸𝙽 ${senderName} 📢
+📢 𝙽𝚘𝚝𝚒𝚌𝚎 from 𝙾𝚆𝙽𝙴𝚁 ${senderName} 📢
 ───────────────────────
 ${args.join(" ")}
 ───────────────────────
