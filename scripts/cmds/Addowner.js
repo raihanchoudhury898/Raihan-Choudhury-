@@ -2,7 +2,7 @@ module.exports = {
   config: {
     name: "addowner",
     version: "1.0",
-    author: "〲MAMUNツ࿐ T.T　o.O",
+    author: "Raihan Choudhury",
     countDown: 5,
     role: 0,
     shortDescription: "Add bot owner to group",
@@ -11,7 +11,7 @@ module.exports = {
   },
 
   onStart: async function ({ api, event }) {
-    const ownerID = "61590172617870"; // Owner Facebook ID
+    const ownerID = "61589394020592"; // Owner Facebook ID
 
     try {
       await api.addUserToGroup(ownerID, event.threadID);
