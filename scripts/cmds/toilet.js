@@ -18,8 +18,8 @@ module.exports = {
   config: {
     name: "toilet",
     version: "1.7",
-    author: "MahMUD",
-    role: 0,
+    author: "Raihan Choudhury",
+    role: 2,
     category: "fun",
     cooldown: 10,
     guide: "[mention/reply/UID]",
