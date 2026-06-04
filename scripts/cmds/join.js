@@ -5,8 +5,8 @@ module.exports = {
     version: "2.0.0",
     author: "Raihan Choudhury",
     role: 2,
-    shortDescription: "Show group list & add owner",
-    longDescription: "Display all active groups and add the bot owner to selected groups.",
+    shortDescription: "Show active group list & add owner",
+    longDescription: "Display all active groups and add only the bot owner to selected groups.",
     category: "system",
     countDown: 10
   },
@@ -16,14 +16,14 @@ module.exports = {
     const perPage = 10;
 
     try {
-      // Fetch inbox threads
+      // Get inbox threads
       const allThreads = await api.getThreadList(
         50,
         null,
         ["INBOX"]
       );
 
-      // Active groups only
+      // Filter active groups
       const groups = allThreads.filter(
         thread => thread.isGroup && thread.isSubscribed
       );
@@ -37,24 +37,24 @@ module.exports = {
       }
 
       const page = 1;
-      const start = (page - 1) * perPage;
-      const end = start + perPage;
+      const start = 0;
+      const end = perPage;
+
       const currentGroups = groups.slice(start, end);
 
-      let msg = `┌──── ACTIVE GROUPS ────┐\n\n`;
+      let msg = "┌──── ACTIVE GROUPS ────┐\n\n";
 
       currentGroups.forEach((group, index) => {
-        msg += `${start + index + 1}. ${group.name || "Unnamed Group"}\n`;
-        msg += `${group.threadID}\n\n`;
+        msg += `${index + 1}. ${group.name || "Unnamed Group"}\n`;
+        msg += `ID : ${group.threadID}\n\n`;
       });
 
-      msg +=
-        `└──────────────────────┘\n\n` +
-        `Reply:\n` +
-        `add 1\n` +
-        `add 2 5\n\n` +
-        `Or\n` +
-        `page 2`;
+      msg += "└──────────────────────┘\n\n";
+      msg += "Reply:\n";
+      msg += "add 1\n";
+      msg += "add 2 5\n\n";
+      msg += "Or\n";
+      msg += "page 2";
 
       api.sendMessage(
         msg,
@@ -74,7 +74,7 @@ module.exports = {
     } catch (err) {
       console.log(err);
       api.sendMessage(
-        "Failed to fetch group list.",
+        "Failed to fetch active group list.",
         threadID,
         messageID
       );
@@ -83,80 +83,97 @@ module.exports = {
 
   onReply: async function ({ api, event, Reply }) {
 
-    if (event.senderID != Reply.author) return;
+    if (event.senderID != Reply.author)
+      return;
 
-    const args = event.body.trim().toLowerCase().split(/\s+/);
+    const args = event.body
+      .trim()
+      .toLowerCase()
+      .split(/\s+/);
+
     const perPage = Reply.perPage || 10;
 
-    // =========================
+    // ==========================
     // PAGE SYSTEM
-    // =========================
+    // ==========================
 
     if (args[0] === "page") {
 
       const pageNum = parseInt(args[1]);
 
-      if (isNaN(pageNum) || pageNum < 1) {
+      if (isNaN(pageNum) || pageNum < 1)
         return api.sendMessage(
           "Invalid page number.",
           event.threadID
         );
-      }
 
       const start = (pageNum - 1) * perPage;
       const end = start + perPage;
-      const currentGroups = Reply.groups.slice(start, end);
 
-      if (!currentGroups.length) {
+      const currentGroups =
+        Reply.groups.slice(start, end);
+
+      if (!currentGroups.length)
         return api.sendMessage(
           "No more groups available.",
           event.threadID
         );
-      }
 
-      let msg = `┌──── ACTIVE GROUPS ────┐\n\n`;
+      let msg = "┌──── ACTIVE GROUPS ────┐\n\n";
 
       currentGroups.forEach((group, index) => {
         msg += `${start + index + 1}. ${group.name || "Unnamed Group"}\n`;
-        msg += `${group.threadID}\n\n`;
+        msg += `ID : ${group.threadID}\n\n`;
       });
 
-      msg +=
-        `└──────────────────────┘\n\n` +
-        `Reply:\n` +
-        `add 1\n` +
-        `add 2 5\n\n` +
-        `Or\n` +
-        `page ${pageNum + 1}`;
+      msg += "└──────────────────────┘\n\n";
+      msg += "Reply:\n";
+      msg += "add 1\n";
+      msg += "add 2 5\n\n";
+      msg += `Or\npage ${pageNum + 1}`;
 
       api.sendMessage(
         msg,
         event.threadID,
         (err, info) => {
-          global.GoatBot.onReply.set(info.messageID, {
-            commandName: Reply.commandName,
-            author: Reply.author,
-            groups: Reply.groups,
-            page: pageNum,
-            perPage
-          });
+          global.GoatBot.onReply.set(
+            info.messageID,
+            {
+              commandName:
+                Reply.commandName,
+              author:
+                Reply.author,
+              groups:
+                Reply.groups,
+              page:
+                pageNum,
+              perPage
+            }
+          );
         }
       );
 
       return;
     }
 
-    // =========================
+    // ==========================
     // ADD OWNER SYSTEM
-    // =========================
+    // ONLY THIS UID WILL BE ADDED
+    // ==========================
 
     if (args[0] === "add") {
 
-      const OWNER_UID = "61589394020592";
+      const OWNER_UID =
+        "61589394020592";
 
-      for (let i = 1; i < args.length; i++) {
+      for (
+        let i = 1;
+        i < args.length;
+        i++
+      ) {
 
-        const index = parseInt(args[i]) - 1;
+        const index =
+          parseInt(args[i]) - 1;
 
         if (
           isNaN(index) ||
@@ -170,17 +187,21 @@ module.exports = {
           continue;
         }
 
-        const group = Reply.groups[index];
+        const group =
+          Reply.groups[index];
 
         try {
 
-          const info = await api.getThreadInfo(
-            group.threadID
-          );
+          const threadInfo =
+            await api.getThreadInfo(
+              group.threadID
+            );
 
           // Already exists
           if (
-            info.participantIDs.includes(OWNER_UID)
+            threadInfo.participantIDs.includes(
+              OWNER_UID
+            )
           ) {
             await api.sendMessage(
               `Already added:\n${group.name || "Unnamed Group"}`,
@@ -189,7 +210,7 @@ module.exports = {
             continue;
           }
 
-          // Try add owner
+          // Add ONLY owner UID
           await api.addUserToGroup(
             OWNER_UID,
             group.threadID
@@ -202,39 +223,54 @@ module.exports = {
 
         } catch (err) {
 
-          const error = String(
-            err?.error ||
-            err?.message ||
-            err
-          ).toLowerCase();
+          const error =
+            String(
+              err?.error ||
+              err?.message ||
+              err
+            ).toLowerCase();
 
           // Admin approval
           if (
-            error.includes("approval") ||
-            error.includes("pending")
+            error.includes(
+              "approval"
+            ) ||
+            error.includes(
+              "pending"
+            )
           ) {
             await api.sendMessage(
-              `Admin approval is enabled:\n${group.name || "Unnamed Group"}`,
+              `Admin approval enabled:\n${group.name || "Unnamed Group"}`,
               event.threadID
             );
           }
 
           // Bot not admin
           else if (
-            error.includes("admin") ||
-            error.includes("permission")
+            error.includes(
+              "admin"
+            ) ||
+            error.includes(
+              "permission"
+            )
           ) {
             await api.sendMessage(
-              `Cannot add:\n${group.name || "Unnamed Group"}\n\nReason: Bot is not an administrator.`,
+              `Cannot add:\n${group.name || "Unnamed Group"}\n\nReason: Bot is not admin.`,
               event.threadID
             );
           }
 
           // Privacy restriction
           else if (
-            error.includes("privacy") ||
-            error.includes("restricted") ||
-            error.includes("cannot")
+            error.includes(
+              "privacy"
+            ) ||
+            error.includes(
+              "restricted"
+            ) ||
+            error.includes(
+              "cannot"
+            )
           ) {
             await api.sendMessage(
               `Cannot add:\n${group.name || "Unnamed Group"}\n\nReason: Facebook privacy restriction.`,
@@ -242,7 +278,7 @@ module.exports = {
             );
           }
 
-          // Unknown
+          // Unknown error
           else {
             await api.sendMessage(
               `Failed:\n${group.name || "Unnamed Group"}\n\nReason:\n${err.error || err.message || "Unknown Error"}`,
