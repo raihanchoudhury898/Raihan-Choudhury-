@@ -14,4 +14,4 @@
 
 
 
-[![Typing SVG](https://readme-typing-svg.herokuapp.com?color=%23F70B10&size=27&lines=I'm+Raihan+Choudhury;from+Noakhali+Bangladesh;If+you+wanna+create+a+BOT;Please+call+me;in+WhatsApp;It's+my+WhatsApp+number;01604884635)](https://git.io/typing-svg)
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?color=%23F70B10&size=27&lines=I'm+Raihan+Choudhury;from+Noakhali+Bangladesh;If+you+wanna+create+a+BOT;Please+call+me+in+WhatsApp;It's+my+WhatsApp+number;01604884635)](https://git.io/typing-svg)
