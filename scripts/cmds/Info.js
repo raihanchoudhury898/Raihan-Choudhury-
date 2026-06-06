@@ -20,7 +20,7 @@ module.exports = {
       name: "𝓡𝓪𝓲𝓱𝓪𝓷 𝓒𝓱𝓸𝓾𝓭𝓱𝓾𝓻𝔂",
       age: "❲ 20+ ❳",
       status: "❮ Single ❯",
-      phone: "➤ 𝟬𝟭𝟴𝟭𝟰𝟯𝟵𝟬𝟴𝟳𝟭"
+      phone: "➤ 𝟬𝟭𝟲𝟬𝟰𝟴𝟴𝟰𝟲𝟯𝟱"
     };
 
     const now = moment().tz("Asia/Dhaka");
