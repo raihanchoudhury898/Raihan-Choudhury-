@@ -2,7 +2,7 @@
 <h1 align="center"><img src="./dashboard/images/logo-non-bg.png" width="22px">   𝗥𝗔𝗜𝗛𝗔𝗡 𝗚𝗢𝗔𝗧 𝗕𝗢𝗧</h1>
 <!-- Github README -->
 
-<p align="center"><img src="https://img.shields.io/badge/I Am Raihan Choudhury from %20BANGLADESHI- NOOB PROGRAMMER-green?colorA=%23ff0000&colorB=%23017e40&style=flat-square">
+<p align="center"><img src="https://img.shields.io/badge/I'm Raihan Choudhury from %20 Noakhali, BANGLADESHI- NOOB PROGRAMMER-green?colorA=%23ff0000&colorB=%23017e40&style=flat-square">
 
 </i></b></h3>
 <h3 align="center">
