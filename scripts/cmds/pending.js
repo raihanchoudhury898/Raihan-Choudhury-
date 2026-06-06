@@ -29,7 +29,7 @@ module.exports = {
     const input = event.body.trim();
     const { threadID, messageID } = event;
     const prefix = global.GoatBot?.config?.prefix || "-";
-    const botNickname = "𝐘𝐎𝐔𝐑 ♲︎︎︎ 𝐁𝐁𝐙 ♡︎♥︎";
+    const botNickname = "𝗥𝗮𝗶𝗵𝗮𝗻 𝗖𝗵𝗼𝘂𝗱𝗵𝘂𝗿𝘆";
     let done = 0;
 
     const dateTime = moment()
@@ -49,7 +49,7 @@ module.exports = {
 `╭─🚫 ACCESS DENIED 🚫─╮
 │ 🤖 Bot : Refused
 │ 🔗 Prefix : ${prefix}
-│ ⚡ Owner : 𝐌𝐀𝐌𝐔𝐍
+│ ⚡ Owner : 𝗥𝗮𝗶𝗵𝗮𝗻 𝗖𝗵𝗼𝘂𝗱𝗵𝘂𝗿𝘆
 │ ⏰ Date/Time : ${dateTime}
 ╰──────────────────╯`,
           targetThreadID
