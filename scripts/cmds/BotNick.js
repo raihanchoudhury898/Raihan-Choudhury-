@@ -3,7 +3,7 @@ module.exports = {
     name: "botnick",
     aliases: ["sn"],
     version: "1.0",
-    author: "BaYjid",
+    author: "𝗥𝗮𝗶𝗵𝗮𝗻 𝗖𝗵𝗼𝘂𝗱𝗵𝘂𝗿𝘆",
     countDown: 5,
     role: 2,
     shortDescription: {
