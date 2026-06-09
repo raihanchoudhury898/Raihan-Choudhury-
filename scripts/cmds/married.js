@@ -1,0 +1,91 @@
+const axios = require("axios");
+const fs = require("fs-extra");
+const path = require("path");
+
+module.exports = {
+  config: {
+    name: "married",
+    version: "1.0",
+    author: "Raihan Choudhury",
+    countDown: 5,
+    role: 0,
+    shortDescription: "Married banner",
+    longDescription: "Generate a married banner using Avatar Canvas API",
+    category: "banner",
+    guide: {
+      en: "{pn} @mention / reply"
+    }
+  }
+};
+
+const captions = [
+  "💟ღــ💘তোমার ভালোবাসা, আমার জীবনের সবথেকে বড় উপহার।💘ღــ💟",
+  "তোমার চোখে তাকালেই আমার যে একটা পৃথিবীর আছে সেটা আমি সবকিছু ভুলে যাই!💚❤️‍🩹💞",
+  "তুমি আমার জীবনের সেই গল্প, যেই গল্প আমি কোন দিন শেষ করতে চাই না!🥰😘🌻",
+  "I am so lucky person! তোমার মতো একজন ভালোবাসায়ী মানুষ আমার জীবন সঙ্গী হিসাবে পেয়ে!❤️‍🩹💞🌺",
+  "I feel complete in my life, যখন ভাবি তোমার মতো একটা লক্ষ্মী মানুষ আমার জীবন সঙ্গী!💝",
+  "তোমাতে শুরু তোমাতেই শেষ, তুমি না থাকলে আমাদের গল্প এখানেই শেষ!🌺",
+  "আমি ছিলাম, আমি আছি আমি থাকবো, শুধু তোমারই জন্য!💞",
+  "❥💙══ღ══❥তোমাকে জড়িয়ে ধরার সুখ এই পৃথিবীর কোনো কিছু দিয়ে কেনা যায় না প্রিয়তমা।══ღ══❥💙❥",
+  "🌻•━এতো ভালোবাসি এতো যারে চাই…মনে হয় নাতো সে যে কাছে নাই!🌻•━",
+  "🌼══ღ══❥চলার পথে আমার হাতে তোমার হাতটা গুঁজে দিও, হাঁটতে গিয়ে হোঁচট খেলে আমায় তুমি সামলে নিও।🌼══ღ══❥",
+  "💠✦💟✦💠আমার মনে হয় আমার মনের মধ্যে একটা নরম জমিটায়, শুধু তোমার বসবাস।💠✦💟✦💠",
+  "আমার জীবনে সুখ-শান্তি লাগবে না, আমি শুধু তোমাকে চাই!🌼"
+];
+
+module.exports.onStart = async function ({ message, event }) {
+  const { senderID, mentions, messageReply } = event;
+
+  let targetID =
+    messageReply?.senderID ||
+    (mentions && Object.keys(mentions)[0]);
+
+  if (!targetID) {
+    return message.reply("Please reply or mention someone......");
+  }
+
+  try {
+    const apiList = await axios.get(
+      "https://raw.githubusercontent.com/shahadat-sahu/SAHU-API/refs/heads/main/SAHU-API.json"
+    );
+
+    const AVATAR_CANVAS_API = apiList.data.AvatarCanvas;
+
+    const res = await axios.post(
+      `${AVATAR_CANVAS_API}/api`,
+      {
+        cmd: "married",
+        senderID,
+        targetID
+      },
+      {
+        responseType: "arraybuffer",
+        timeout: 30000
+      }
+    );
+
+    const tmpDir = path.join(__dirname, "tmp");
+    if (!fs.existsSync(tmpDir)) fs.mkdirSync(tmpDir);
+
+    const imgPath = path.join(
+      tmpDir,
+      `married_${senderID}_${targetID}.png`
+    );
+
+    fs.writeFileSync(imgPath, res.data);
+
+    const caption =
+      captions[Math.floor(Math.random() * captions.length)];
+
+    return message.reply(
+      {
+        body: caption,
+        attachment: fs.createReadStream(imgPath)
+      },
+      () => fs.unlinkSync(imgPath)
+    );
+
+  } catch {
+    return message.reply("API Error Call Boss SAHU");
+  }
+};
