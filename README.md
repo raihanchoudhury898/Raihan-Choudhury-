@@ -1,45 +1,92 @@
 <img src="https://i.imgur.com/R2xYBn6.jpeg" alt="banner">
 
-<h1 align="center">
-  <img src="./dashboard/images/logo-non-bg.png" width="24px">
-  <span style="color:#FF0000;">𝗥𝗔𝗜𝗛𝗔𝗡 𝗚𝗢𝗔𝗧 𝗕𝗢𝗧</span>
-</h1>
-
+<!-- MAIN TITLE -->
 <p align="center">
-  <img src="https://img.shields.io/badge/𝗕𝗢𝗧%20𝗗𝗘𝗩𝗘𝗟𝗢𝗣𝗘𝗥-𝗥𝗔𝗜𝗛𝗔𝗡%20𝗖𝗛𝗢𝗨𝗗𝗛𝗨𝗥𝗬-ff0000?style=for-the-badge">
+<img src="https://capsule-render.vercel.app/api?type=waving&height=140&text=RAIHAN%20GOAT%20BOT&fontAlign=50&fontAlignY=40&color=ff0033&fontColor=ffffff&fontSize=42&animation=twinkling" />
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/𝗖𝗢𝗨𝗡𝗧𝗥𝗬-𝗕𝗔𝗡𝗚𝗟𝗔𝗗𝗘𝗦𝗛-ff5e00?style=for-the-badge">
-  <img src="https://img.shields.io/badge/𝗗𝗜𝗦𝗧𝗥𝗜𝗖𝗧-𝗡𝗢𝗔𝗞𝗛𝗔𝗟𝗜-ff9900?style=for-the-badge">
+<img src="https://img.shields.io/badge/BOT%20DEVELOPER-RAIHAN%20CHOUDHURY-ff0033?style=for-the-badge">
+<img src="https://img.shields.io/badge/COUNTRY-BANGLADESH-ff6600?style=for-the-badge">
+<img src="https://img.shields.io/badge/DISTRICT-NOAKHALI-ffaa00?style=for-the-badge">
 </p>
 
-<h3 align="center">
-  <img src="https://emoji.discord.st/emojis/768b108d-274f-4f44-a634-8477b16efce7.gif" width="25">
-  <span style="color:#FFD700;">𝗪𝗘𝗟𝗖𝗢𝗠𝗘 𝗧𝗢 𝗠𝗬 𝗣𝗥𝗢𝗙𝗜𝗟𝗘</span>
-  <img src="https://emoji.discord.st/emojis/768b108d-274f-4f44-a634-8477b16efce7.gif" width="25">
-</h3>
+<!-- WELCOME -->
+<p align="center">
+<img src="https://capsule-render.vercel.app/api?type=rect&height=85&text=WELCOME%20TO%20MY%20PROFILE&fontAlign=50&fontAlignY=50&color=ffd700&fontColor=000000&fontSize=30" />
+</p>
 
 <p align="center">
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 </p>
 
 <p align="center">
 
-[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=28&pause=1000&duration=3000&center=true&vCenter=true&width=850&height=60&color=FF0000&lines=🔴+𝗜'𝗠+𝗥𝗔𝗜𝗛𝗔𝗡+𝗖𝗛𝗢𝗨𝗗𝗛𝗨𝗥𝗬;🟠+𝗙𝗥𝗢𝗠+𝗡𝗢𝗔𝗞𝗛𝗔𝗟𝗜,+𝗕𝗔𝗡𝗚𝗟𝗔𝗗𝗘𝗦𝗛;🟡+𝗕𝗢𝗧+𝗗𝗘𝗩𝗘𝗟𝗢𝗣𝗘𝗥+%26+𝗣𝗥𝗢𝗚𝗥𝗔𝗠𝗠𝗘𝗥;🟢+𝗖𝗥𝗘𝗔𝗧𝗜𝗡𝗚+𝗣𝗢𝗪𝗘𝗥𝗙𝗨𝗟+𝗚𝗢𝗔𝗧𝗕𝗢𝗧+𝗠𝗢𝗗𝗨𝗟𝗘𝗦;🔵+𝗖𝗢𝗡𝗧𝗔𝗖𝗧+𝗠𝗘+𝗔𝗡𝗬𝗧𝗜𝗠𝗘;🟣+𝗪𝗛𝗔𝗧𝗦𝗔𝗣𝗣+:+01604884635)](https://git.io/typing-svg)
+<a href="https://git.io/typing-svg">
+<img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=28&pause=1000&duration=2500&center=true&vCenter=true&width=950&color=FF0033&lines=🔥+I'M+RAIHAN+CHOUDHURY;🧡+FROM+NOAKHALI,+BANGLADESH;💛+BOT+DEVELOPER+AND+PROGRAMMER;💚+CREATING+POWERFUL+GOATBOT+MODULES;💙+CUSTOM+COMMAND+DEVELOPER;💜+WHATSAPP+:+01604884635" />
+</a>
 
 </p>
 
 <p align="center">
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 </p>
 
-<h2 align="center">🔴 𝗔𝗕𝗢𝗨𝗧 𝗠𝗘</h2>
+<!-- ABOUT ME -->
+<p align="center">
+<img src="https://capsule-render.vercel.app/api?type=rect&height=85&text=ABOUT%20ME&fontAlign=50&fontAlignY=50&color=00ff66&fontColor=000000&fontSize=30" />
+</p>
 
 ```yaml
-Name      : Raihan Choudhury
-Location  : Noakhali, Bangladesh
-Profession: Bot Developer
-Language  : Bangla + English
-Framework : GoatBot
-Status    : Active
+╭─────────────────────────────────────╮
+│ Name       : Raihan Choudhury
+│ Country    : Bangladesh
+│ District   : Noakhali
+│ Profession : Bot Developer
+│ Language   : Bangla + English
+│ Framework  : GoatBot
+│ Runtime    : Node.js
+│ Status     : Active
+╰─────────────────────────────────────╯
+
+<!-- SKILLS --><p align="center">
+<img src="https://capsule-render.vercel.app/api?type=rect&height=85&text=MY%20SKILLS&fontAlign=50&fontAlignY=50&color=00bfff&fontColor=ffffff&fontSize=30" />
+</p><p align="center">
+<img src="https://skillicons.dev/icons?i=js,nodejs,git,github,vscode,npm" />
+</p><p align="center">
+<img src="https://img.shields.io/badge/JAVASCRIPT-ff0033?style=for-the-badge">
+<img src="https://img.shields.io/badge/NODE.JS-ff6600?style=for-the-badge">
+<img src="https://img.shields.io/badge/GOATBOT-ffaa00?style=for-the-badge">
+<img src="https://img.shields.io/badge/API-DEVELOPMENT-00ff66?style=for-the-badge">
+<img src="https://img.shields.io/badge/CUSTOM-MODULES-00bfff?style=for-the-badge">
+</p><!-- GITHUB STATS --><p align="center">
+<img src="https://capsule-render.vercel.app/api?type=rect&height=85&text=GITHUB%20STATS&fontAlign=50&fontAlignY=50&color=8a2be2&fontColor=ffffff&fontSize=30" />
+</p><p align="center">
+<img height="170" src="https://github-readme-stats.vercel.app/api?username=YOUR_USERNAME&show_icons=true&theme=radical" />
+<img height="170" src="https://github-readme-stats.vercel.app/api/top-langs/?username=YOUR_USERNAME&layout=compact&theme=radical" />
+</p><!-- CONTACT --><p align="center">
+<img src="https://capsule-render.vercel.app/api?type=rect&height=85&text=CONTACT%20ME&fontAlign=50&fontAlignY=50&color=b400ff&fontColor=ffffff&fontSize=30" />
+</p><p align="center">📱 WhatsApp : <b>01604884635</b>
+
+🌍 Country : <b>Bangladesh</b>
+
+📍 District : <b>Noakhali</b>
+
+</p><!-- SPECIAL MESSAGE --><p align="center">
+<img src="https://capsule-render.vercel.app/api?type=rect&height=85&text=SPECIAL%20MESSAGE&fontAlign=50&fontAlignY=50&color=ff1493&fontColor=ffffff&fontSize=30" />
+</p><p align="center">✨ IF YOU WANNA CREATE A POWERFUL BOT ✨
+
+🚀 I'M ALWAYS READY TO HELP 🚀
+
+💎 PREMIUM GOATBOT DEVELOPER 💎
+
+❤️ THANKS FOR VISITING MY PROFILE ❤️
+
+</p><p align="center">
+🔴━━━━━━━━━━🟠━━━━━━━━━━🟡━━━━━━━━━━🟢━━━━━━━━━━🔵━━━━━━━━━━🟣
+</p><p align="center">
+⚡ <b>RAIHAN GOAT BOT</b> ⚡
+</p><p align="center">
+🔴━━━━━━━━━━🟠━━━━━━━━━━🟡━━━━━━━━━━🟢━━━━━━━━━━🔵━━━━━━━━━━🟣
+</p>
+```
