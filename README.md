@@ -40,6 +40,6 @@
 Name      : Raihan Choudhury
 Location  : Noakhali, Bangladesh
 Profession: Bot Developer
-Language  : JavaScript, Node.js
+Language  : Bangla + English
 Framework : GoatBot
 Status    : Active
