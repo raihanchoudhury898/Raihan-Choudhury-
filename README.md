@@ -36,14 +36,15 @@
 <img src="https://img.shields.io/badge/👤_NAME-RAIHAN_CHOUDHURY-ff0033?style=for-the-badge">
 <br><br>
 <h3 align="center">🌈 PERSONAL INFORMATION 🌈</h3>
+<h3 align="center">🌈 PERSONAL INFORMATION 🌈</h3>
 
 <p align="center">
 
-❤️ Raihan Choudhury <br>
-🧡 20 Years Old <br>
-💛 HSC 2nd Year Student <br>
-💚 Science Department <br>
-💙 WhatsApp : 01604884635 <br>
-💜 Bangla & English Speaker
+🔴 Name : Raihan Choudhury <br>
+🟠 Age : 20 Years <br>
+🟡 Education : HSC 2nd Year <br>
+🟢 Department : Science <br>
+🔵 WhatsApp : 01604884635 <br>
+🟣 Language : Bangla & English
 
 </p>
