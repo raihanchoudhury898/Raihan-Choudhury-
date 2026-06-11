@@ -31,11 +31,6 @@
 <p align="center">
 ━━━━━━━━━━━━━━━━━━━━━━━━━
 </p>
-
-<!-- ABOUT ME -->
-<p align="center">
-<img src="https://capsule-render.vercel.app/api?type=rect&height=85&text=ABOUT%20ME&fontAlign=50&fontAlignY=50&color=00ff66&fontColor=000000&fontSize=30" />
-</p>
 <p align="center">
 
 <img src="https://img.shields.io/badge/👤_NAME-RAIHAN_CHOUDHURY-ff0033?style=for-the-badge">
@@ -61,4 +56,8 @@
 
 <img src="https://img.shields.io/badge/🗣️_LANGUAGE-BANGLA_+_ENGLISH-b300ff?style=for-the-badge">
 
+</p>
+<!-- ABOUT ME -->
+<p align="center">
+<img src="https://capsule-render.vercel.app/api?type=rect&height=85&text=ABOUT%20ME&fontAlign=50&fontAlignY=50&color=00ff66&fontColor=000000&fontSize=30" />
 </p>
