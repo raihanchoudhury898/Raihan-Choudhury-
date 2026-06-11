@@ -35,29 +35,15 @@
 
 <img src="https://img.shields.io/badge/👤_NAME-RAIHAN_CHOUDHURY-ff0033?style=for-the-badge">
 <br><br>
+<h3 align="center">🌈 PERSONAL INFORMATION 🌈</h3>
 
-<img src="https://img.shields.io/badge/🎂_AGE-20_YEARS-ff6600?style=for-the-badge">
-<br><br>
-
-<img src="https://img.shields.io/badge/🎓_CLASS-HSC_2ND_YEAR-ffaa00?style=for-the-badge">
-<br><br>
-
-<img src="https://img.shields.io/badge/🔬_DEPARTMENT-SCIENCE-ffff00?style=for-the-badge&labelColor=222222">
-<br><br>
-
-<img src="https://img.shields.io/badge/💼_PROFESSION-STUDENT-00ff66?style=for-the-badge">
-<br><br>
-
-<img src="https://img.shields.io/badge/🌍_COUNTRY-BANGLADESH-00ccff?style=for-the-badge">
-<br><br>
-
-<img src="https://img.shields.io/badge/📍_DISTRICT-NOAKHALI-0066ff?style=for-the-badge">
-<br><br>
-
-<img src="https://img.shields.io/badge/🗣️_LANGUAGE-BANGLA_+_ENGLISH-b300ff?style=for-the-badge">
-
-</p>
-<!-- ABOUT ME -->
 <p align="center">
-<img src="https://capsule-render.vercel.app/api?type=rect&height=85&text=ABOUT%20ME&fontAlign=50&fontAlignY=50&color=00ff66&fontColor=000000&fontSize=30" />
+
+❤️ Raihan Choudhury <br>
+🧡 20 Years Old <br>
+💛 HSC 2nd Year Student <br>
+💚 Science Department <br>
+💙 WhatsApp : 01604884635 <br>
+💜 Bangla & English Speaker
+
 </p>
