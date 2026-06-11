@@ -96,14 +96,15 @@ module.exports = {
     const owner = global.GoatBot.config.adminName || "Raihan Choudhury";
 
     return message.reply(
-`╭━━━〔 PREFIX 〕━━━╮
-┃ 🎀 GROUP : ${groupName}
-┃ ☠️ SYSTEM : 『 ${systemPrefix} 』
-┃ ☯️ GROUP  : 『 ${groupPrefix} 』
-┃ 💠 TIME   : ${time}
-┃ ⚠️ DATE   : ${date}
-┃ Ⓜ️ OWNER  : 𝗥𝗮𝗶𝗵𝗮𝗻 𝗖𝗵𝗼𝘂𝗱𝗵𝘂𝗿𝘆
-╰━━━〔 ✨ ×͜× 〕━━━╯`
+`╭━━━ 𝗦𝗬𝗦𝗧𝗘𝗠 𝗣𝗥𝗘𝗙𝗜𝗫 ━━━╮
+┃ 𝗚𝗥𝗢𝗨𝗣 : ${groupName} 
+┃ 𝗦𝗬𝗦𝗧𝗘𝗠 : ${systemPrefix} 
+┃ 𝗚𝗥𝗢𝗨𝗣 𝗣𝗥𝗘𝗙𝗜𝗫 : ${groupPrefix}
+┃ 𝗧𝗜𝗠𝗘 : ${time} 
+┃ 𝗗𝗔𝗧𝗘 : ${date}
+┃𝗢𝗪𝗡𝗘𝗥 : 𝗥𝗮𝗶𝗵𝗮𝗻 𝗖𝗵𝗼𝘂𝗱𝗵𝘂𝗿𝘆 
+┃
+╰━ ✺ 𝚁𝙰𝙸𝙷𝙰𝙽'𝚂 𝙶𝙾𝙰𝚃 𝙱𝙾𝚃 ━╯`
     );
   }
 };
