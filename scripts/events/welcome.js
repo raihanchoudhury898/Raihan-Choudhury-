@@ -9,7 +9,7 @@ module.exports = {
   config: {
     name: "welcome",
     version: "8.0",
-    author: "EryXenX",
+    author: "Raihan Choudhury",
     category: "events"
   },
 
@@ -17,7 +17,7 @@ module.exports = {
     en: {
       defaultWelcomeMessage: "𝗪𝗲𝗹𝗰𝗼𝗺𝗲 {userName} 🎉\n┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄\n✦ Glad to have you here! Enjoy your stay and make great memories 🌸",
       botAddedMessage:
-        "𝐓𝐇𝐀𝐍𝐊𝐒 𝐅𝐎𝐑 𝐀𝐃𝐃𝐈𝐍𝐆 𝐌𝐄 𝐔𝐒𝐄 -𝐇𝐄𝐋𝐏 𝐓𝐎 𝐒𝐄 𝐀𝐋𝐋 𝐂𝐌𝐃 𝐌𝐘 𝐎𝐖𝐍𝐄𝐑 𝐏𝐀𝐑𝐒𝐎𝐍𝐀𝐋 𝐁𝐎𝐓"
+        "╭────────────────⭓\n│✺ 𝚃𝙷𝙰𝙽𝙺𝚂 𝙵𝙾𝚁 𝙲𝙷𝙾𝙾𝚂𝙸𝙽𝙶 𝙼𝙴!\n│\n│۞ Type -help to access my\n│ complete command menu.\n╰────────────────⭓"
   
     }
   },
@@ -538,7 +538,7 @@ async function createWelcomeCard({
     pGrad.addColorStop(1, 'rgba(46,204,113,1)');
     ctx.fillStyle = pGrad;
     ctx.shadowColor = 'rgba(100,200,255,0.55)'; ctx.shadowBlur = 16;
-    ctx.fillText('Powered By EryXenX', cx, cy + 8);
+    ctx.fillText('OWNER RAIHAN CHOUDHURY', cx, cy + 8);
     ctx.restore();
   }
 
