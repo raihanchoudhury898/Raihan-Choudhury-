@@ -6,7 +6,7 @@ module.exports = {
   config: {
     name: "transfer",
     aliases: ["send", "pay"],
-    version: "3.1",
+    version: "3.3",
     author: "Raihan Choudhury",
     countDown: 5,
     role: 0,
@@ -18,14 +18,27 @@ module.exports = {
     },
     category: "economy",
     guide: {
-      en: "{pn} @user <amount>\nExample: {pn} @Raihan 100"
+      en: "{pn} @user <amount>\nExample: {pn} @Raihan 100\n\nAdmin unlimited transfer: {pn} @user <any amount>"
     }
   },
 
   onStart: async function ({ message, event, args, usersData }) {
     const { threadID, senderID, mentions } = event;
 
-    // Check if user mentioned someone
+    //━━━━━━━━━━━━━━━━━━━━━━━
+    // ✅ ADMIN CHECK (YOUR CONFIG)
+    //━━━━━━━━━━━━━━━━━━━━━━━
+    const adminUIDs = global.GoatBot?.config?.adminBot || global.config?.adminBot || [];
+    const isAdmin = adminUIDs.includes(senderID);
+    
+    // 🛠️ DEBUG: দেখুন adminUIDs আসছে কিনা (কনসোলে দেখাবে)
+    console.log("Admin UIDs from config:", adminUIDs);
+    console.log("Your Sender ID:", senderID);
+    console.log("Is Admin:", isAdmin);
+
+    //━━━━━━━━━━━━━━━━━━━━━━━
+    // CHECK MENTION
+    //━━━━━━━━━━━━━━━━━━━━━━━
     if (!mentions || Object.keys(mentions).length === 0) {
       return message.reply(
         `╭──✦ ❌ ERROR\n` +
@@ -39,7 +52,9 @@ module.exports = {
     const recipientName = mentions[recipientID];
     const amount = parseInt(args[args.length - 1]);
 
-    // Validate amount
+    //━━━━━━━━━━━━━━━━━━━━━━━
+    // VALIDATE AMOUNT
+    //━━━━━━━━━━━━━━━━━━━━━━━
     if (isNaN(amount) || amount <= 0) {
       return message.reply(
         `╭──✦ ❌ ERROR\n` +
@@ -49,9 +64,11 @@ module.exports = {
       );
     }
 
-    // Minimum transfer check
+    //━━━━━━━━━━━━━━━━━━━━━━━
+    // MINIMUM TRANSFER CHECK (EXCEPT ADMIN)
+    //━━━━━━━━━━━━━━━━━━━━━━━
     const MIN_TRANSFER = 10;
-    if (amount < MIN_TRANSFER) {
+    if (!isAdmin && amount < MIN_TRANSFER) {
       return message.reply(
         `╭──✦ ❌ ERROR\n` +
         `├‣ Minimum transfer amount is ${MIN_TRANSFER} coins.\n` +
@@ -59,22 +76,29 @@ module.exports = {
       );
     }
 
-    // Get sender and receiver data from usersData
+    //━━━━━━━━━━━━━━━━━━━━━━━
+    // GET USER DATA
+    //━━━━━━━━━━━━━━━━━━━━━━━
     const senderData = await usersData.get(senderID);
     const receiverData = await usersData.get(recipientID);
 
-    // Check if sender has enough balance
     const senderBalance = Number(senderData?.money || 0);
-    if (senderBalance < amount) {
+
+    //━━━━━━━━━━━━━━━━━━━━━━━
+    // CHECK BALANCE (SKIP FOR ADMIN)
+    //━━━━━━━━━━━━━━━━━━━━━━━
+    if (!isAdmin && senderBalance < amount) {
       return message.reply(
-        `╭──✦❌ INSUFFICIENT BALANCE\n` +
+        `╭──✦ ❌ INSUFFICIENT BALANCE\n` +
         `├‣ You have only ${senderBalance} coins.\n` +
         `├‣ Required: ${amount} coins\n` +
         `╰──────────────────‣`
       );
     }
 
-    // Initialize receiver if new
+    //━━━━━━━━━━━━━━━━━━━━━━━
+    // INIT RECEIVER IF NEW
+    //━━━━━━━━━━━━━━━━━━━━━━━
     if (!receiverData) {
       await usersData.set(recipientID, {
         name: recipientName || `User ${recipientID}`,
@@ -84,13 +108,18 @@ module.exports = {
       });
     }
 
-    // Process transfer (NO FEE)
-    await usersData.set(senderID, {
-      name: senderData?.name || `User ${senderID}`,
-      money: (senderBalance - amount).toString(),
-      exp: senderData?.exp || 0,
-      data: senderData?.data || {}
-    });
+    //━━━━━━━━━━━━━━━━━━━━━━━
+    // PROCESS TRANSFER
+    //━━━━━━━━━━━━━━━━━━━━━━━
+    if (!isAdmin) {
+      // Normal user: deduct from balance
+      await usersData.set(senderID, {
+        name: senderData?.name || `User ${senderID}`,
+        money: (senderBalance - amount).toString(),
+        exp: senderData?.exp || 0,
+        data: senderData?.data || {}
+      });
+    }
 
     const receiverBalance = Number(receiverData?.money || 0);
     await usersData.set(recipientID, {
@@ -100,7 +129,9 @@ module.exports = {
       data: receiverData?.data || {}
     });
 
-    // Save transaction history
+    //━━━━━━━━━━━━━━━━━━━━━━━
+    // SAVE HISTORY
+    //━━━━━━━━━━━━━━━━━━━━━━━
     const historyPath = path.join(__dirname, "../data/transfer_history.json");
     await fs.ensureFile(historyPath);
     let historyData = {};
@@ -109,11 +140,9 @@ module.exports = {
       if (raw) historyData = JSON.parse(raw);
     } catch (e) { historyData = {}; }
 
-    // Bangladesh time
     const bangladeshTime = moment().tz("Asia/Dhaka");
     const formattedTime = bangladeshTime.format("DD/MM/YYYY - h:mm:ss A");
 
-    // Add to history
     if (!historyData[senderID]) historyData[senderID] = [];
     if (!historyData[recipientID]) historyData[recipientID] = [];
 
@@ -122,6 +151,7 @@ module.exports = {
       to: recipientID,
       toName: recipientName,
       amount: amount,
+      isAdmin: isAdmin,
       timestamp: bangladeshTime.toISOString()
     });
 
@@ -130,21 +160,27 @@ module.exports = {
       from: senderID,
       fromName: senderData?.name || `User ${senderID}`,
       amount: amount,
+      isAdmin: isAdmin,
       timestamp: bangladeshTime.toISOString()
     });
 
-    // Keep only last 50 entries
     if (historyData[senderID].length > 50) historyData[senderID] = historyData[senderID].slice(-50);
     if (historyData[recipientID].length > 50) historyData[recipientID] = historyData[recipientID].slice(-50);
 
     await fs.writeFile(historyPath, JSON.stringify(historyData, null, 2));
 
-    // Send success message with stylish box
+    //━━━━━━━━━━━━━━━━━━━━━━━
+    // SEND RESPONSE
+    //━━━━━━━━━━━━━━━━━━━━━━━
+    const balanceMsg = isAdmin
+      ? `├‣ Admin: Unlimited (no deduction)`
+      : `├‣ Your balance: ${senderBalance - amount} coins`;
+
     return message.reply(
-      `╭──✦✅ TRANSFER SUCCESSFUL\n` +
+      `╭──✦ ✅ TRANSFER SUCCESSFUL\n` +
       `├‣ To: ${recipientName}\n` +
       `├‣ Amount: ${amount} coins\n` +
-      `├‣ Your balance: ${senderBalance - amount} coins\n` +
+      `${balanceMsg}\n` +
       `├‣ Time: ${formattedTime}\n` +
       `╰──────────────────‣\n` +
       `📜 Use "history" to view your transaction history.`
@@ -187,10 +223,12 @@ module.exports = {
         const bangladeshTime = moment(entry.timestamp).tz("Asia/Dhaka");
         const time = bangladeshTime.format("DD/MM/YYYY - h:mm:ss A");
         
+        const adminTag = entry.isAdmin ? " 👑" : "";
+        
         if (entry.type === "sent") {
-          historyText += `├‣ ${index + 1}. ⬆️ Sent ${entry.amount} coins to ${entry.toName}\n`;
+          historyText += `├‣ ${index + 1}. ⬆️ Sent ${entry.amount} coins to ${entry.toName}${adminTag}\n`;
         } else if (entry.type === "received") {
-          historyText += `├‣ ${index + 1}. ⬇️ Received ${entry.amount} coins from ${entry.fromName}\n`;
+          historyText += `├‣ ${index + 1}. ⬇️ Received ${entry.amount} coins from ${entry.fromName}${adminTag}\n`;
         }
         historyText += `├‣    🕐 ${time}\n`;
       });
@@ -202,7 +240,7 @@ module.exports = {
     }
 
     // Balance command
-    if (body === "bal" || body === "balance" || body === "mybalance") {
+    if (body === "coin" || body === "balance" || body === "mybalance") {
       const userData = await usersData.get(senderID);
       const balance = Number(userData?.money || 0);
       return message.reply(
