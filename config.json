@@ -12,27 +12,32 @@
   "antiInbox": false,
   "language": "en",
   "notesLanguage": "change language using ISO 639-1 code",
-  "nickNameBot": "𝗥𝗮𝗶𝗵𝗮𝗻 𝗖𝗵𝗼𝘂𝗱𝗵𝘂𝗿𝘆━━ᥫ᭡",
-  "prefix": "-",
+  "nickNameBot": "✺ 𝚁𝙰𝙸𝙷𝙰𝙽'𝚂 𝙶𝙾𝙰𝚃 𝙱𝙾𝚃 𖣘",
+  "prefix": "/",
   "adminOnly": {
     "enable": false,
     "ignoreCommand": []
   },
   "adminBot": [
-    "61579901465090",
     "61589394020592",
-    "61588533909028"
+    "61579901465090",
+    ""
+  ],
+  "premiumUsers": [
+    "61565445532840",
+    "61587369582707",
+    "100090631581258"
   ],
   "reactUnsend": {
     "enable": true,
     "onlyAdmin": true,
-    "emojis": ["👍", "😡"],
+    "emojis": ["😾", "❌"],
     "notes": "If enable = true, bot will unsend any message reacted with these emojis. If onlyAdmin = true, only adminBot IDs can trigger it."
   },
   "whiteListMode": {
     "enable": false,
     "whiteListIds": [
-      "61579901465090"
+      "61589394020592"
     ],
     "notes": "If enabled, only IDs in whiteListIds can use the bot."
   },
@@ -150,4 +155,4 @@
     "autoReconnect": false,
     "notes": "Docs: https://github.com/ntkhang03/fb-chat-api/blob/master/DOCS.md#apisetoptionsoptions"
   }
-}
+  }
